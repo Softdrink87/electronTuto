@@ -1,0 +1,39 @@
+{
+  "name": "clockapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "electron": "electron .",
+    "electron:window": "SET ELECTRON_START_URL=http://localhost:3000 && yarn electron",
+    "electron:xos": "ELECTRON_START_URL=http://localhost:3000 && yarn electron",
+    "prebuild": "react-scripts test --watchAll=false",
+    "build": "react-scripts build",
+    "deploy:xos": "electron-builder --mac",
+    "deploy:win32": "electron-builder --win --ia32",
+    "deploy:win64": "electron-builder --win --x64",
+    "deploy:win": "yarn deploy:win32 && yarn deploy:win64"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.4"
+  },
+  "build": {
+    "productName": "clocapp",
+    "appid": "com.roh.electron",
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "icon/clock.ico"
+    },
+    "directories": {
+      "buildResources": "./",
+      "output": "./dist/"
+    }
+  }
+}
